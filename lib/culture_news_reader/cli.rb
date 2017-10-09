@@ -1,7 +1,7 @@
-class Culture_news_reader::CLI
+class CultureNewsReader::CLI
 
 	def call
 		puts "The Fader"
 	end
-	
+
 end

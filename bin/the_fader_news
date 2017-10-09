@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+require'./lib/culture_news_reader'
 
-puts "Hi"
+CultureNewsReader::CLI.new.call

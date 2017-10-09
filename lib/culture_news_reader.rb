@@ -1,5 +1,2 @@
-require "culture_news_reader/version"
-
-module CultureNewsReader
-  # Your code goes here...
-end
+require_relative "culture_news_reader/version"
+require_relative 'culture_news_reader/cli'
