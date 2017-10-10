@@ -25,9 +25,9 @@ class CultureNewsReader::CLI
 				puts Scraper.scrape_music_page('music')
 			when "2"
 				#puts "Style News..."
-				puts Scraper.scrape_style_page('style')
+				puts Scraper.scrape_music_page('style')
 			when "3"
-				puts Scraper.scrape_culture_page('culture')
+				puts Scraper.scrape_music_page('culture')
 			when "4"
 				puts Scraper.scrape_trending_stories('trending')
 			when "list"
