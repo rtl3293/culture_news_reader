@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 require'./lib/culture_news_reader'
 
-CultureNewsReader::CLI.new.call
+CLI = CultureNewsReader::CLI.new
+CLI.call
+CLI.menu
