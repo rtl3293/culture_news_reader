@@ -7,7 +7,7 @@ class CultureNewsReader::CLI
 
 	def list_categories
 		puts "The Fader"
-		categories = ["Music", "Style", "Culture"]
+		categories = ["Music", "Style", "Culture", "Trending"]
 		categories.each_with_index do |category, i|
 			puts "#{i+1}. #{category}"
 		end
@@ -28,6 +28,8 @@ class CultureNewsReader::CLI
 				puts Scraper.scrape_style_page(fader_url + 'style')
 			when "3"
 				puts Scraper.scrape_culture_page(fader_url + 'culture')
+			when "4"
+				puts Scraper.scrape_trending_stories(fader_url)
 			when "list"
 				list_categories
 			end
