@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
-require'./lib/culture_news_reader'
+require './lib/culture_news_reader'
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
 
 
 category = CultureNewsReader::CLI.new.call
-
 
 
