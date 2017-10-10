@@ -5,9 +5,10 @@ class Scraper
 	def self.scrape_music_page(music_url)
 		html = open(music_url)
 		doc = Nokogiri::HTML(html)
-		stories = doc.css("div.card.music")
+		stories = doc.css("div.card.pinned_post")
 		scraped_stories = stories.collect do |story|
-			{:title => story.css(".card_headline").text}
+			{:title => story.css(".card_headline").text,
+			 :description =>story.css(".card_summary").text}
 		end
 		if scraped_stories[0] == scraped_stories[1]
 			scraped_stories.shift
