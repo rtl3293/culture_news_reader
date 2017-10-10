@@ -22,12 +22,12 @@ class CultureNewsReader::CLI
 			case input
 			when "1"
 				#puts "Music News..."
-				Scraper.scrape_music_page(fader_url + 'music')
+				puts Scraper.scrape_music_page(fader_url + 'music')
 			when "2"
 				#puts "Style News..."
-				Scraper.scrape_style_page(fader_url + 'style')
+				puts Scraper.scrape_style_page(fader_url + 'style')
 			when "3"
-				Scraper.scrape_culture_page(fader_url + 'culture')
+				puts Scraper.scrape_culture_page(fader_url + 'culture')
 			when "list"
 				list_categories
 			end

@@ -5,6 +5,8 @@ class Scraper
 	def self.scrape_music_page(music_url)
 		html = open(music_url)
 		doc = Nokogiri::HTML(html)
+		stories = doc.css(".pinned_post")
+		binding.pry
 	end
 
 	def self.scrape_style_page(style_url)
