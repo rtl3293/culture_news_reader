@@ -18,16 +18,22 @@ class Scraper
 	def self.scrape_style_page(style_url)
 		html = open(style_url)
 		doc = Nokogiri::HTML(html)
+		stories = doc.css("")
 	end
 
 	def self.scrape_culture_page(culture_url)
 		html = open(culture_url)
 		doc = Nokogiri::HTML(html)
+		stories = doc.css("")
 	end
 
-	def self.scrape_trending_stories(url)
-		html = open(url)
+	def self.scrape_trending_stories(trending_url)
+		html = open(trending_url)
 		doc = Nokogiri::HTML(html)
+		stories = doc.css("div.featured_post")
+		scraped_stories = stories.collect do |story|
+			{:title => story.css(".card_headline").text}
+		end
 	end
 
 

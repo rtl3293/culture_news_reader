@@ -29,7 +29,7 @@ class CultureNewsReader::CLI
 			when "3"
 				puts Scraper.scrape_culture_page(fader_url + 'culture')
 			when "4"
-				puts Scraper.scrape_trending_stories(fader_url)
+				puts Scraper.scrape_trending_stories(fader_url + 'trending')
 			when "list"
 				list_categories
 			end
