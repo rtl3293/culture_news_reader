@@ -6,7 +6,7 @@ class Scraper
 		html = open(music_url)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css(".pinned_post")
-		collection = stories.collect do |story|
+		scraped_stories = stories.collect do |story|
 			{:title => story.css(".card_headline").text}
 		end
 
