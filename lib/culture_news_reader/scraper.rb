@@ -25,4 +25,10 @@ class Scraper
 		doc = Nokogiri::HTML(html)
 	end
 
+	def self.scrape_trending_stories(url)
+		html = open(url)
+		doc = Nokogiri::HTML(html)
+	end
+
+
 end
