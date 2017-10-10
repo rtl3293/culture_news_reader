@@ -13,9 +13,20 @@ class CultureNewsReader::CLI
 		end
 	end
 
-	def menu	
-		puts "Enter the number for the news you'd like:"
-		category = gets.strip
+	def menu
+		input = nil	
+		while input != "exit"
+			puts "Enter the number for the news you'd like:"
+			input = gets.strip.downcase
+			case input
+			when "1"
+				puts "Music News..."
+			when "2"
+				puts "Style News..."
+			when "list"
+				list_categories
+			end
+		end
 	end
 
 
