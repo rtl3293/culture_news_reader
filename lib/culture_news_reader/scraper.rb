@@ -8,7 +8,8 @@ class Scraper
 		stories = doc.css("div.card.pinned_post")
 		scraped_stories = stories.collect do |story|
 			{:title => story.css(".card_headline").text,
-			 :description =>story.css(".card_summary").text}
+			 :description =>story.css(".card_summary").text,
+			 :link => story.css("a")[0]['href']}
 		end
 		if scraped_stories[0] == scraped_stories[1]
 			scraped_stories.shift
