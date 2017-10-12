@@ -26,18 +26,26 @@ class CultureNewsReader::CLI
 				music.each_with_index do |article, i|
 					puts "#{i+1}. #{article[:title]}"
 					puts "#{article[:description]}"
-					puts "-------------"
+					puts "---------------------------------------"
 				end
 				#puts music
 				launcher(music)
 			when "2"
 				#puts "Style News..."
 				style = Scraper.scrape_page('style')
-				puts style
+				style.each_with_index do |article, i|
+					puts "#{i+1}. #{article[:title]}"
+					puts "#{article[:description]}"
+					puts "---------------------------------------"
+				end
 				launcher(style)
 			when "3"
 				culture = Scraper.scrape_page('culture')
-				puts culture
+				culture.each_with_index do |article, i|
+					puts "#{i+1}. #{article[:title]}"
+					puts "#{article[:description]}"
+					puts "---------------------------------------"
+				end
 				launcher(culture)
 			when "4"
 				puts Scraper.scrape_trending_stories('trending')
