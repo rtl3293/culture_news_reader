@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 require './lib/culture_news_reader'
-require 'pry'
 require 'nokogiri'
 require 'open-uri'
-require 'launchy'
+require "launchy"
 
 
 CultureNewsReader::CLI.new.call

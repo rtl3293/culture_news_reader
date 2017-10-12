@@ -1,6 +1,4 @@
-
-
-class Scraper
+class CultureNewsReader::Scraper
 	THE_FADER_URL = 'http://www.thefader.com/'
 	def self.scrape_page(url)
 		url.downcase!

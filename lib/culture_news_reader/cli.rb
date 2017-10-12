@@ -20,21 +20,21 @@ class CultureNewsReader::CLI
 			case input
 			when "1"
 				#puts "Music News..."
-				music = Scraper.scrape_page(@@categories[input.to_i - 1])
+				music = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(music)
 				#puts music
 				launcher(music)
 			when "2"
 				#puts "Style News..."
-				style = Scraper.scrape_page(@@categories[input.to_i - 1])
+				style = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(style)
 				launcher(style)
 			when "3"
-				culture = Scraper.scrape_page(@@categories[input.to_i - 1])
+				culture = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(culture)
 				launcher(culture)
 			when "4"
-				trending = Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
+				trending = CultureNewsReader::Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
 				display(trending)
 				launcher(trending)
 			when "list"
