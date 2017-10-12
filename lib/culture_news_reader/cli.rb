@@ -14,7 +14,6 @@ class CultureNewsReader::CLI
 	end
 
 	def menu
-		fader_url = 'http://www.thefader.com/'
 		input = nil	
 		while input != "exit"
 			puts "Enter the number for the news you'd like:"
@@ -57,9 +56,12 @@ class CultureNewsReader::CLI
 	end
 
 	def launcher(page)
+		#fader_url = 'http://www.thefader.com/'
 		puts "Which article would you like to read?"
-		#input = gets.strip
-
+		input = gets.strip
+		site_to_open = page[input.to_i - 1][:link]
+		#binding.pry
+		Launchy.open(site_to_open)
 	end
 
 
