@@ -45,13 +45,16 @@ class Scraper
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.featured_post")
 		scraped_stories = stories.collect do |story|
-			binding.pry
-			{:title => story.css(".card_headline").text,
-			:description => story.css("card_summary").text,
-			:link => story.css("a")[0]["href"]
-		}
-		binding.pry
+			#binding.pry
+			article = {:title => story.css(".card_headline").text,
+			:description => story.css(".card_summary").text}
+			if article[:title] != "" && article[:description] != ""
+				article[:link] = THE_FADER_URL + story.css("a")[0]['href']
+			end
+			article
+		#binding.pry
 		end
+		scraped_stories.delete_if {|a| a[:title] == "" && a[:description] == ""}
 	end
 
 
