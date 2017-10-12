@@ -22,30 +22,33 @@ class CultureNewsReader::CLI
 			case input
 			when "1"
 				#puts "Music News..."
-				puts Scraper.scrape_page('music')
-				puts "Which article would you like to read?"
-				article = gets.strip
+				music = Scraper.scrape_page('music')
+				puts music
+				launcher(music)
 			when "2"
 				#puts "Style News..."
-				puts Scraper.scrape_page('style')
-				puts "Which article would you like to read?"
-				article = gets.strip
+				style = Scraper.scrape_page('style')
+				puts style
+				launcher(style)
 			when "3"
-				puts Scraper.scrape_page('culture')
-				puts "Which article would you like to read?"
-				article = gets.strip
+				culture = Scraper.scrape_page('culture')
+				puts culture
+				launcher(culture)
 			when "4"
 				puts Scraper.scrape_trending_stories('trending')
-				puts "Which article would you like to read?"
-				article = gets.strip
+
 			when "list"
 				list_categories
 			end
 		end
 	end
 
-	def launcher
+	def launcher(page)
+		puts "Which article would you like to read?"
+		#input = gets.strip
+		page.each do |article|
 
+		end
 	end
 
 
