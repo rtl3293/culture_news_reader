@@ -2,8 +2,8 @@
 
 class Scraper
 	THE_FADER_URL = 'http://www.thefader.com/'
-	def self.scrape_page(_url)
-		html = open(THE_FADER_URL + music_url)
+	def self.scrape_page(url)
+		html = open(THE_FADER_URL + url)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.card.pinned_post")
 		scraped_stories = stories.collect do |story|
