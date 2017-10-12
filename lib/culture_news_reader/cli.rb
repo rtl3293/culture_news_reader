@@ -1,14 +1,13 @@
 class CultureNewsReader::CLI
-
+	@@categories = ["Music", "Style", "Culture", "Trending"].freeze
 	def call
 		list_categories
 		menu
 	end
 
 	def list_categories
-		puts "The Fader"
-		categories = ["Music", "Style", "Culture", "Trending"]
-		categories.each_with_index do |category, i|
+		puts "The Fader"	
+		@@categories.each_with_index do |category, i|
 			puts "#{i+1}. #{category}"
 		end
 	end
@@ -21,21 +20,21 @@ class CultureNewsReader::CLI
 			case input
 			when "1"
 				#puts "Music News..."
-				music = Scraper.scrape_page('music')
+				music = Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(music)
 				#puts music
 				launcher(music)
 			when "2"
 				#puts "Style News..."
-				style = Scraper.scrape_page('style')
+				style = Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(style)
 				launcher(style)
 			when "3"
-				culture = Scraper.scrape_page('culture')
+				culture = Scraper.scrape_page(@@categories[input.to_i - 1])
 				display(culture)
 				launcher(culture)
 			when "4"
-				trending = Scraper.scrape_trending_stories('trending')
+				trending = Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
 				display(trending)
 				launcher(trending)
 			when "list"
