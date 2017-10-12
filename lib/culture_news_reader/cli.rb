@@ -23,9 +23,10 @@ class CultureNewsReader::CLI
 			when "1"
 				#puts "Music News..."
 				music = Scraper.scrape_page('music')
-				music.each do |article|
-					puts "#{article[:title]}"
+				music.each_with_index do |article, i|
+					puts "#{i+1}. #{article[:title]}"
 					puts "#{article[:description]}"
+					puts "-------------"
 				end
 				#puts music
 				launcher(music)
