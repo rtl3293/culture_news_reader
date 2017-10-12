@@ -16,7 +16,7 @@ class CultureNewsReader::CLI
 	def menu
 		input = nil	
 		while input != "exit"
-			puts "Enter the number for the news you'd like:"
+			puts "Enter the number for the news you'd like or type exit:"
 			input = gets.strip.downcase
 			case input
 			when "1"
@@ -47,7 +47,13 @@ class CultureNewsReader::CLI
 				end
 				launcher(culture)
 			when "4"
-				puts Scraper.scrape_trending_stories('trending')
+				trending = Scraper.scrape_trending_stories('trending')
+				trending.each_with_index do |article, i|
+					puts "#{i+1}. #{article[:title]}"
+					puts "#{article[:description]}"
+					puts "---------------------------------------"
+				end
+					launcher(trending)
 			when "list"
 				list_categories
 			end
