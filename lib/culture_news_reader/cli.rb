@@ -48,7 +48,6 @@ class CultureNewsReader::CLI
 				launcher(culture)
 			when "4"
 				puts Scraper.scrape_trending_stories('trending')
-
 			when "list"
 				list_categories
 			end

@@ -45,7 +45,12 @@ class Scraper
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.featured_post")
 		scraped_stories = stories.collect do |story|
-			{:title => story.css(".card_headline").text}
+			binding.pry
+			{:title => story.css(".card_headline").text,
+			:description => story.css("card_summary").text,
+			:link => story.css("a")[0]["href"]
+		}
+		binding.pry
 		end
 	end
 
