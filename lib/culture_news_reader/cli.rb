@@ -23,7 +23,11 @@ class CultureNewsReader::CLI
 			when "1"
 				#puts "Music News..."
 				music = Scraper.scrape_page('music')
-				puts music
+				music.each do |article|
+					puts "#{article[:title]}"
+					puts "#{article[:description]}"
+				end
+				#puts music
 				launcher(music)
 			when "2"
 				#puts "Style News..."
@@ -46,9 +50,7 @@ class CultureNewsReader::CLI
 	def launcher(page)
 		puts "Which article would you like to read?"
 		#input = gets.strip
-		page.each do |article|
 
-		end
 	end
 
 
