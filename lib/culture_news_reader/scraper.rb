@@ -18,7 +18,6 @@ class CultureNewsReader::Scraper
 		articles = scraped_stories.collect do |article|
 			Article.new(article)
 		end
-		binding.pry
 		articles
 	end
 
@@ -44,8 +43,9 @@ class CultureNewsReader::Scraper
 	# 	end
 	# end
 
-	def self.scrape_trending_stories(trending_url)
-		html = open(THE_FADER_URL + trending_url)
+	def self.scrape_trending_stories(url)
+		url.downcase!
+		html = open(THE_FADER_URL + url)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.featured_post")
 		scraped_stories = stories.collect do |story|
@@ -59,6 +59,10 @@ class CultureNewsReader::Scraper
 		#binding.pry
 		end
 		scraped_stories.delete_if {|a| a[:title] == "" && a[:description] == ""}
+		articles = scraped_stories.collect do |article|
+			Article.new(article)
+		end
+		articles
 	end
 
 

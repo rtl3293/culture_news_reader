@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ryan Lonergan"]
   spec.email         = ["ryan.tlonergan@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Displays latest articles from The Fader and allows you to open them in your browser."
+  spec.description   = "Displays latest articles from The Fader and allows you to open them in your browser."
+  spec.homepage      = "https://github.com/rtl3293/culture_news_reader"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 11.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "nokogiri"
   spec.add_dependency "open-uri"
