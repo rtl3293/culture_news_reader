@@ -19,21 +19,23 @@ class CultureNewsReader::CLI
 			input = gets.strip.downcase
 			case input
 			when "1"
-				#puts "Music News..."
+				Article.display_all.clear
 				music = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				Article.display_all
 				#puts music
 				launcher(music)
 			when "2"
-				#puts "Style News..."
+				Article.display_all.clear
 				style = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(style)
 			when "3"
+				Article.display_all.clear
 				culture = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(culture)
 			when "4"
+				Article.display_all.clear
 				trending = CultureNewsReader::Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(trending)
@@ -58,13 +60,6 @@ class CultureNewsReader::CLI
 		end		
 	end
 
-	def display()
-		article_has.each_with_index do |article, i|
-			puts "#{i+1}. #{article.title}"
-			puts "#{article.description}"
-			puts "---------------------------------------"
-		end
-	end
 
 
 end
