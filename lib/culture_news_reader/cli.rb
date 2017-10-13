@@ -1,5 +1,5 @@
 class CultureNewsReader::CLI
-	@@categories = ["Music", "Style", "Culture", "Trending"].freeze
+	@@categories = ["Music", "Style", "Culture", "Trending"]
 	def call
 		list_categories
 		menu

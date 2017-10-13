@@ -1,9 +1,9 @@
 class CultureNewsReader::Scraper
 	THE_FADER_URL = 'http://www.thefader.com/'
 	def self.scrape_page(url)
-		url.downcase!
+		page = url.downcase
 		#binding.pry
-		html = open(THE_FADER_URL + url)
+		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.card.pinned_post")
 		scraped_stories = stories.collect do |story|
@@ -22,8 +22,8 @@ class CultureNewsReader::Scraper
 	end
 
 	def self.scrape_trending_stories(url)
-		url.downcase!
-		html = open(THE_FADER_URL + url)
+		page = url.downcase
+		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.featured_post")
 		scraped_stories = stories.collect do |story|
