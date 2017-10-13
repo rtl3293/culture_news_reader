@@ -54,12 +54,20 @@ class CultureNewsReader::CLI
 	def launcher(page)
 		input = nil
 		while input != "exit"
-			puts "Enter the article number you would like to read, or type exit:"
+			puts "Enter the article number you would like to preview, or type exit:"
 			input = gets.strip.downcase
 			if input == "exit"
 				return
 			elsif input.to_i <= page.length
-				page[input.to_i - 1].open
+				puts "------------------------------------------------------------------------------"
+				puts "			#{page[input.to_i - 1].title}"	
+				puts "------------------------------------------------------------------------------"
+				CultureNewsReader::Scraper.story(page[input.to_i - 1])
+				puts "Would you like to read this? Y/n"
+				y_or_n = gets.strip.downcase
+				if y_or_n == "y"
+					page[input.to_i - 1].open
+				end
 			else
 				puts "Please try again"
 			end

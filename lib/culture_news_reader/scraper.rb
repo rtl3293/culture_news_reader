@@ -42,7 +42,7 @@ class CultureNewsReader::Scraper
 	def self.story(article) 
 		html = open(article.link)
 		doc = Nokogiri::HTML(html)
-		puts doc.css("div.paragraph_wrapper > p")
+		puts doc.css("#content_block-143251 .paragraph_wrapper p").text
 	end
 
 
