@@ -19,5 +19,4 @@ class Article
 			puts "---------------------------------------"
 		end
 	end
-
 end
