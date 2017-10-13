@@ -17,7 +17,7 @@ class CultureNewsReader::CLI
 	def menu
 		input = nil	
 		while input != "exit"
-			puts "Enter the number for the news you'd like or type exit:"
+			puts "Enter the number for the news you'd like, list to see the categories, or type exit:"
 			input = gets.strip.downcase
 			case input
 			when "1"
@@ -43,6 +43,10 @@ class CultureNewsReader::CLI
 				launcher(trending)
 			when "list"
 				list_categories
+			when "exit"
+				puts "Stay Faded"
+			else
+				puts "Invalid. Please try again."
 			end
 		end
 	end

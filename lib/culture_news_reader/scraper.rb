@@ -21,28 +21,6 @@ class CultureNewsReader::Scraper
 		articles
 	end
 
-	# def self.scrape_style_page(style_url)
-	# 	html = open(THE_FADER_URL + style_url)
-	# 	doc = Nokogiri::HTML(html)
-	# 	stories = doc.css("div.card.pinned_post")
-	# 	scraped_stories = stories.collect do |story|
-	# 		{:title => story.css(".card_headline").text,
-	# 		 :description =>story.css(".card_summary").text,
-	# 		 :link => THE_FADER_URL + story.css("a")[0]['href']}
-	# 	end
-	# end
-
-	# def self.scrape_culture_page(culture_url)
-	# 	html = open(THE_FADER_URL + culture_url)
-	# 	doc = Nokogiri::HTML(html)
-	# 	stories = doc.css("div.card.pinned_post")
-	# 	scraped_stories = stories.collect do |story|
-	# 		{:title => story.css(".card_headline").text,
-	# 		 :description =>story.css(".card_summary").text,
-	# 		 :link => THE_FADER_URL + story.css("a")[0]['href']}
-	# 	end
-	# end
-
 	def self.scrape_trending_stories(url)
 		url.downcase!
 		html = open(THE_FADER_URL + url)
