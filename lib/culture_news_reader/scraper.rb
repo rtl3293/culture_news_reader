@@ -15,7 +15,11 @@ class CultureNewsReader::Scraper
 			scraped_stories.shift
 		end
 		#binding.pry
-		scraped_stories
+		articles = scraped_stories.collect do |article|
+			Article.new(article)
+		end
+		binding.pry
+		articles
 	end
 
 	# def self.scrape_style_page(style_url)

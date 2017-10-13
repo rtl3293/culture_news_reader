@@ -44,7 +44,7 @@ class CultureNewsReader::CLI
 	end
 
 	def launcher(page)
-		#fader_url = 'http://www.thefader.com/'
+		fader_url = 'http://www.thefader.com/'
 		input = nil
 		while input != "exit"
 			puts "Enter the article number you would like to read, or type exit:"
@@ -52,7 +52,7 @@ class CultureNewsReader::CLI
 			if input == "exit"
 				return
 			elsif input.to_i <= page.length
-				site_to_open = page[input.to_i - 1][:link]
+				site_to_open = fader_url + page[input.to_i - 1].link
 				Launchy.open(site_to_open)
 			else
 				puts "Please try again"
@@ -62,8 +62,8 @@ class CultureNewsReader::CLI
 
 	def display(article_hash)
 		article_hash.each_with_index do |article, i|
-			puts "#{i+1}. #{article[:title]}"
-			puts "#{article[:description]}"
+			puts "#{i+1}. #{article.title}"
+			puts "#{article.description}"
 			puts "---------------------------------------"
 		end
 	end

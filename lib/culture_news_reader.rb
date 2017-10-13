@@ -1,6 +1,4 @@
 require_relative 'culture_news_reader/version'
 require_relative 'culture_news_reader/cli'
 require_relative 'culture_news_reader/scraper.rb'
-
-
-CultureNewsReader::CLI.new.call
+require_relative 'culture_news_reader/article.rb'
