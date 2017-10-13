@@ -21,21 +21,21 @@ class CultureNewsReader::CLI
 			when "1"
 				#puts "Music News..."
 				music = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
-				display(music)
+				Article.display_all
 				#puts music
 				launcher(music)
 			when "2"
 				#puts "Style News..."
 				style = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
-				display(style)
+				Article.display_all
 				launcher(style)
 			when "3"
 				culture = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
-				display(culture)
+				Article.display_all
 				launcher(culture)
 			when "4"
 				trending = CultureNewsReader::Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
-				display(trending)
+				Article.display_all
 				launcher(trending)
 			when "list"
 				list_categories
@@ -58,8 +58,8 @@ class CultureNewsReader::CLI
 		end		
 	end
 
-	def display(article_hash)
-		article_hash.each_with_index do |article, i|
+	def display()
+		article_has.each_with_index do |article, i|
 			puts "#{i+1}. #{article.title}"
 			puts "#{article.description}"
 			puts "---------------------------------------"
