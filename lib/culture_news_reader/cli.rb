@@ -60,9 +60,10 @@ class CultureNewsReader::CLI
 				return
 			elsif input.to_i <= page.length
 				puts "------------------------------------------------------------------------------"
-				puts "			#{page[input.to_i - 1].title}"	
+				puts "#{page[input.to_i - 1].title}"	
 				puts "------------------------------------------------------------------------------"
 				CultureNewsReader::Scraper.story(page[input.to_i - 1])
+				puts "------------------------------------------------------------------------------"
 				puts "Would you like to read this? Y/n"
 				y_or_n = gets.strip.downcase
 				if y_or_n == "y"

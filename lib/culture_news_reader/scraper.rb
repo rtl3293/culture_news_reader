@@ -36,13 +36,15 @@ class CultureNewsReader::Scraper
 		articles = scraped_stories.collect do |article|
 			Article.new(article)
 		end
-		articles
 	end
 
 	def self.story(article) 
 		html = open(article.link)
 		doc = Nokogiri::HTML(html)
-		puts doc.css("#content_block-143251 .paragraph_wrapper p").text
+
+		preview = doc.css(".paragraph_wrapper p").text.split("\n")
+		puts preview[1].strip
+
 	end
 
 
