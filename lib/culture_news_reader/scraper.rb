@@ -1,6 +1,6 @@
 class CultureNewsReader::Scraper
 	THE_FADER_URL = 'http://www.thefader.com/'
-	def self.scrape_page(url)
+	def self.page(url)
 		page = url.downcase
 		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
@@ -19,7 +19,7 @@ class CultureNewsReader::Scraper
 		articles
 	end
 
-	def self.scrape_trending_stories(url)
+	def self.trending_page(url)
 		page = url.downcase
 		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
@@ -38,6 +38,13 @@ class CultureNewsReader::Scraper
 		end
 		articles
 	end
+
+	def self.story(article) 
+		html = open(article.link)
+		doc = Nokogiri::HTML(html)
+		puts doc.css("div.paragraph_wrapper > p")
+	end
+
 
 
 end

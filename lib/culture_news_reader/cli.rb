@@ -22,23 +22,23 @@ class CultureNewsReader::CLI
 			case input
 			when "1"
 				Article.display_all.clear
-				music = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
+				music = CultureNewsReader::Scraper.page(@@categories[input.to_i - 1])
 				Article.display_all
 				#puts music
 				launcher(music)
 			when "2"
 				Article.display_all.clear
-				style = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
+				style = CultureNewsReader::Scraper.page(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(style)
 			when "3"
 				Article.display_all.clear
-				culture = CultureNewsReader::Scraper.scrape_page(@@categories[input.to_i - 1])
+				culture = CultureNewsReader::Scraper.page(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(culture)
 			when "4"
 				Article.display_all.clear
-				trending = CultureNewsReader::Scraper.scrape_trending_stories(@@categories[input.to_i - 1])
+				trending = CultureNewsReader::Scraper.trending_page(@@categories[input.to_i - 1])
 				Article.display_all
 				launcher(trending)
 			when "list"
