@@ -34,52 +34,39 @@ class CultureNewsReader::CLI
 				CultureNewsReader::Scraper.page(category)
 				list_articles(category)
 				#puts music
-				launcher(category.articles)
+				launcher(category)
 			elsif input.to_i == 4
 				category = CultureNewsReader::Category.all[input.to_i - 1]
 				CultureNewsReader::Scraper.trending_page(category)
 				list_articles(category)
+				launcher(category)
 			elsif input == "list"
-					list_categories
-				elsif input == "exit"
-					puts "Stay Faded"
-				else
-					puts "Invalid. Please try again."
-				end
-			# when "2"
-			# 	#CultureNewsReader::Article.all.clear
-			# 	style = CultureNewsReader::Scraper.page(@@categories[input.to_i - 1])
-			# 	list_articles
-			# 	launcher(style)
-			# when "3"
-			# 	#CultureNewsReader::Article.all.clear
-			# 	culture = CultureNewsReader::Scraper.page(@@categories[input.to_i - 1])
-			# 	list_articles
-			# 	launcher(culture)
-			# when "4"
-			# 	#CultureNewsReader::Article.all.clear
-			# 	list_articles
-			# 	launcher(trending)
+				list_categories
+			elsif input == "exit"
+				puts "Stay Faded"
+			else
+				puts "Invalid. Please try again."
+			end
 		end
 	end
 
-	def launcher(page)
+	def launcher(category)
 		input = nil
 		while input != "exit"
 			puts "Enter the article number you would like to preview, or type exit:"
 			input = gets.strip.downcase
 			if input == "exit"
 				return
-			elsif input.to_i <= page.length
+			elsif input.to_i <= category.articles.length
 				puts "------------------------------------------------------------------------------"
-				puts "#{page[input.to_i - 1].title}"
+				puts "#{category.articles[input.to_i - 1].title}"
 				puts "------------------------------------------------------------------------------"
-				CultureNewsReader::Scraper.story(page[input.to_i - 1])
+				puts CultureNewsReader::Scraper.story(category.articles[input.to_i - 1])
 				puts "------------------------------------------------------------------------------"
 				puts "Would you like to read this? Y/n"
 				y_or_n = gets.strip.downcase
 				if y_or_n == "y"
-					page[input.to_i - 1].open
+					category.articles[input.to_i - 1].open
 				end
 			else
 				puts "Please try again"
