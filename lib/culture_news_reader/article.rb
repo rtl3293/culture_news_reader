@@ -1,4 +1,4 @@
-class Article
+class CultureNewsReader::Article
 	attr_accessor :title, :description, :link
 	@@all = []
 	def initialize(title:, description:, link:)
@@ -12,11 +12,7 @@ class Article
 		Launchy.open(@link)
 	end
 
-	def self.display_all
-		@@all.each_with_index do |article, i|
-			puts "#{i+1}. #{article.title}"
-			puts "#{article.description}"
-			puts "---------------------------------------"
-		end
+	def self.all
+		@@all
 	end
 end

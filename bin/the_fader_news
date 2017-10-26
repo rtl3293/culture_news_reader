@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require './lib/culture_news_reader'
+require_relative '../lib/culture_news_reader'
 require 'nokogiri'
 require 'open-uri'
 require "launchy"
@@ -7,5 +7,3 @@ require 'pry'
 
 
 CultureNewsReader::CLI.new.call
-
-

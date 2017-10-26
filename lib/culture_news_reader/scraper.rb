@@ -1,7 +1,7 @@
 class CultureNewsReader::Scraper
 	THE_FADER_URL = 'http://www.thefader.com/'
-	def self.page(url)
-		page = url.downcase
+	def self.page(category)
+		page = category.name.downcase
 		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.card.pinned_post")
@@ -13,14 +13,14 @@ class CultureNewsReader::Scraper
 		if scraped_stories[0] == scraped_stories[1]
 			scraped_stories.shift
 		end
-		articles = scraped_stories.collect do |article|
-			Article.new(article)
+		scraped_stories.each do |article|
+			article = CultureNewsReader::Article.new(article)
+			category.add_article(article)
 		end
-		articles
 	end
 
-	def self.trending_page(url)
-		page = url.downcase
+	def self.trending_page(category)
+		page = category.name.downcase
 		html = open(THE_FADER_URL + page)
 		doc = Nokogiri::HTML(html)
 		stories = doc.css("div.featured_post")
@@ -34,11 +34,11 @@ class CultureNewsReader::Scraper
 		end
 		scraped_stories.delete_if {|a| a[:title] == "" && a[:description] == ""}
 		articles = scraped_stories.collect do |article|
-			Article.new(article)
+			CultureNewsReader::Article.new(article)
 		end
 	end
 
-	def self.story(article) 
+	def self.story(article)
 		html = open(article.link)
 		doc = Nokogiri::HTML(html)
 
